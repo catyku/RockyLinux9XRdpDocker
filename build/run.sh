@@ -58,8 +58,9 @@ while [ $# -ne 0 ]; do
     wait
     echo "user '$1' is added"
 
-    cp /xsessionrc "/home/$1/.xsession"
-    chown $1:$1 "/home/$1/.xsession"
+    echo "$(cat /xsessionrc)" >> "home/$1/.bashrc"
+    #cp /xsessionrc "/home/$1/.xinitrc"
+    #chown $1:$1 "/home/$1/.xinitrc"
     # Shift all the parameters down by three
     shift 3
 done

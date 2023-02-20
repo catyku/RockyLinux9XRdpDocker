@@ -5,7 +5,7 @@ FROM rockylinux:9.1
 RUN yum -y update
 
 RUN yum -y install epel-release
-RUN yum -y reinstall glibc-locale-source glibc-langpack-en glib-langpack-zh glibc-common kde-l10n-Chinese
+#RUN yum -y reinstall glibc-locale-source glibc-langpack-en glib-langpack-zh glibc-common kde-l10n-Chinese
 
 RUN yum -y groupinstall Fonts
 
