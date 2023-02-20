@@ -11,7 +11,7 @@ RUN yum -y groupinstall Fonts
 
 #RUN localedef -c -f UTF-8 -i zh_TW zh_TW.utf8
 
-ENV TZ="Asia/Taipei"
+#ENV TZ="Asia/Taipei"
 #ENV LANG=zh_TW.UTF8
 #ENV LANGUAGE=zh_TW
 
@@ -39,7 +39,7 @@ RUN mv /etc/xrdp/startwm-xfce.sh /etc/xrdp/startwm.sh
 
 RUN chmod a+x /etc/xrdp/startwm.sh
 
-COPY ./build/bashrc /
+COPY ./build/xsessionrc /
 
 COPY ./build/run.sh /
 RUN chmod +x /run.sh

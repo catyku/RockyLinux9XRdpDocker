@@ -3,16 +3,19 @@
 start_xrdp_services() {
     # Preventing xrdp startup failure
     rm -rf /var/run/xrdp-sesman.pid
+#    rm -rf /var/run/ibus-daemon.pid
     rm -rf /var/run/xrdp.pid
     rm -rf /var/run/xrdp/xrdp-sesman.pid
     rm -rf /var/run/xrdp/xrdp.pid
+#    ibus-daemon -d 
 
     # Use exec ... to forward SIGNAL to child processes
-    xrdp-sesman
+    xrdp-sesman 
     exec xrdp -n
 }
 
 stop_xrdp_services() {
+    #ibus-daemon --kill
     xrdp --kill
     xrdp-sesman --kill
     exit 0
@@ -55,7 +58,8 @@ while [ $# -ne 0 ]; do
     wait
     echo "user '$1' is added"
 
-    cp /bashrc "/home/$1/.bashrc"
+    cp /xsessionrc "/home/$1/.xsession"
+    chown $1:$1 "/home/$1/.xsession"
     # Shift all the parameters down by three
     shift 3
 done
